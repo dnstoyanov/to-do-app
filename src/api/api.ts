@@ -17,3 +17,18 @@ export const fetchTasks = () => {
       throw error;
     });
 };
+
+export const deleteTask = async (taskId: number) => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/${taskId}`, {
+      headers: { "content-type": "application/json" },
+    });
+
+    if (response.status === 200) {
+      console.log("Task deleted successfully");
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
+  }
+};

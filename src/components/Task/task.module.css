@@ -1,0 +1,28 @@
+.tastContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(243, 243, 243);
+  margin-bottom: 15px;
+  padding: 20px;
+  box-shadow: 0px 2px 5px rgb(179, 179, 179);
+}
+
+.completeBtn,
+.progressBtn,
+.deleteBtn {
+  font-size: 28px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.completeBtn {
+  color: rgb(8, 153, 8);
+}
+
+.progressBtn {
+  color: rgb(5, 117, 161);
+}
+
+.deleteBtn {
+  color: red;
+}

@@ -4,6 +4,7 @@ interface ToDo {
   description: string;
   completed: boolean;
   pending: boolean;
+  editedAt: Date;
 }
 
 export default ToDo;

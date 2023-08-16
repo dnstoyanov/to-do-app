@@ -28,6 +28,12 @@
   flex-shrink: 0;
 }
 
+h3,
+p {
+  margin: 0;
+  padding: 0.2em 0;
+}
+
 @media (max-width: 768px) {
   .app {
     padding: 10px;
