@@ -27,15 +27,24 @@
   margin-right: 10px;
 }
 .completeBtn {
-  color: rgb(8, 153, 8);
+  color: rgb(13, 158, 13);
+}
+.completeBtn:hover {
+  color: rgb(6, 110, 6);
+}
+.progressBtn {
+  color: rgb(26, 169, 226);
 }
 
-.progressBtn {
+.progressBtn:hover {
   color: rgb(5, 117, 161);
 }
 
 .deleteBtn {
   color: red;
+}
+.deleteBtn:hover {
+  color: rgb(194, 13, 13);
 }
 
 .dateEdited {

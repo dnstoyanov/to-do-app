@@ -20,48 +20,22 @@
   gap: 5px;
   width: 100%;
 }
-.inputField {
+.inputField,
+.errorField {
   padding: 10px;
-  border: 1px solid #ccc;
-  flex: 1;
+  padding-left: 20px;
+  border: 2px solid #ccc;
   outline: none;
   transition: border-color 0.3s;
-  height: 80px;
+  height: 40px;
+  font-size: 18px;
 }
 .inputField:focus {
   border-color: #007bff;
 }
 
-.inputLabel {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.addButton {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 11px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-.icon {
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-}
-
 .errorField {
-  padding: 10px;
-  border: 1px solid #e60000;
-  flex: 1;
-  outline: none;
-  transition: border-color 0.3s;
+  border: 2px solid #e60000;
   &::placeholder {
     color: #e60000;
   }
@@ -69,4 +43,28 @@
 
 .errorField:focus {
   border-color: #e60000;
+}
+
+.inputLabel {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.addButton {
+  height: 64px;
+  min-width: 200px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+}
+
+.addButton:hover {
+  background-color: #065ebd;
 }
