@@ -6,10 +6,10 @@ import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 
 import { TbProgressCheck } from "react-icons/tb";
+import { AiTwotoneCalendar } from "react-icons/ai";
 import { IoMdDoneAll } from "react-icons/io";
 import { TiDeleteOutline } from "react-icons/ti";
 import { deleteTask } from "../../api/api";
-import { useState } from "react";
 
 interface TaskProps {
   task: ToDo;
@@ -17,7 +17,6 @@ interface TaskProps {
 const Task: React.FC<TaskProps> = ({
   task: { id, title, description, editedAt },
 }) => {
-  const [showToolTip, setShowToolTip] = useState<boolean>(false);
   const formattedDate = moment(editedAt).format("D MMMM, YYYY h:mm:ss A z");
 
   const handleDelete = async (id: number) => {
@@ -32,7 +31,10 @@ const Task: React.FC<TaskProps> = ({
       <div>
         <h3>{title}</h3>
         <p>{description}</p>
-        <p>{formattedDate}</p>
+        <div className={styles.dateEdited}>
+          <AiTwotoneCalendar fontSize={18} />{" "}
+          <div className={styles.dateText}>{formattedDate}</div>
+        </div>
       </div>
       <div>
         <TbProgressCheck
@@ -50,7 +52,7 @@ const Task: React.FC<TaskProps> = ({
           data-tooltip-id="delete-btn"
           data-tooltip-content="Delete task"
           className={styles.deleteBtn}
-          onClick={() => handleDelete(id)}
+          onClick={() => id !== undefined && handleDelete(id)}
         />
         <Tooltip id="progress-btn" />
         <Tooltip id="complete-btn" />

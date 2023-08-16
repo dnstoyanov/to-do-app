@@ -1,4 +1,5 @@
 import axios from "axios";
+import ToDo from "../types/ToDo";
 
 const API_BASE_URL = "https://64dcdddde64a8525a0f7447e.mockapi.io/to-do-list";
 
@@ -26,6 +27,22 @@ export const deleteTask = async (taskId: number) => {
 
     if (response.status === 200) {
       console.log("Task deleted successfully");
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
+  }
+};
+
+export const createTask = async (newTask: ToDo) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}`, newTask, {
+      headers: { "content-type": "application/json" },
+    });
+
+    if (response.status === 201) {
+      console.log("Task created successfully");
+      return response.data as ToDo; // Return the newly created task
     }
   } catch (error) {
     console.error("An error occurred:", error);

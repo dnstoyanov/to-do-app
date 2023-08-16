@@ -26,3 +26,12 @@
 .deleteBtn {
   color: red;
 }
+
+.dateEdited {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.dateText {
+  font-size: 14px;
+}

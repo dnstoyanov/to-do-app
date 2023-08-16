@@ -32,6 +32,11 @@ h3,
 p {
   margin: 0;
   padding: 0.2em 0;
+  text-transform: capitalize;
+}
+
+h3 {
+  color: #007bff;
 }
 
 @media (max-width: 768px) {
