@@ -57,7 +57,7 @@ export const updateTaskCompletionStatusByID = async (
   try {
     const response = await axios.put(
       `${API_BASE_URL}/${taskId}`,
-      { isCompleted },
+      { isCompleted, isInProgress: !isCompleted },
       {
         headers: { "content-type": "application/json" },
       }
@@ -82,7 +82,7 @@ export const updateTaskInProgressStatusByID = async (
   try {
     const response = await axios.put(
       `${API_BASE_URL}/${taskId}`,
-      { isInProgress },
+      { isInProgress, isCompleted: !isInProgress },
       {
         headers: { "content-type": "application/json" },
       }
