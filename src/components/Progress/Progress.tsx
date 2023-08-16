@@ -1,6 +1,6 @@
 import { useTasks } from "../../contexts/TaskContext";
-import ToDo from "../../types/ToDo";
-import Task from "../Task/task";
+import Task from "../../types/Task";
+import SingleTask from "../SingleTask/SingleTask";
 
 import styles from "./Progress.module.css";
 
@@ -14,8 +14,8 @@ const Progress = () => {
   return (
     <div className={styles.progressList}>
       <h1>In Progress</h1>
-      {tasksInProgress.map((task: ToDo) => (
-        <Task task={task} key={task.id} />
+      {tasksInProgress.map((task: Task) => (
+        <SingleTask task={task} key={task.id} />
       ))}
     </div>
   );

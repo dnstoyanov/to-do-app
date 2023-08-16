@@ -1,8 +1,8 @@
 import "./App.css";
-import AddToDo from "./components/AddToDo/AddToDo";
+import AddTask from "./components/AddTask/AddTask";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import ToDoContent from "./components/ToDoContent/ToDoContent";
+import TasksContent from "./components/TasksContent/TasksContent";
 import { TasksProvider } from "./contexts/TaskContext";
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
       <div className="app">
         <div className="content">
           <Header />
-          <AddToDo />
-          <ToDoContent />
+          <AddTask />
+          <TasksContent />
         </div>
         <Footer />
       </div>

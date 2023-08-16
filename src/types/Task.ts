@@ -1,4 +1,4 @@
-interface ToDo {
+interface Task {
   id?: number;
   title: string;
   description: string;
@@ -7,4 +7,4 @@ interface ToDo {
   editedAt: Date;
 }
 
-export default ToDo;
+export default Task;

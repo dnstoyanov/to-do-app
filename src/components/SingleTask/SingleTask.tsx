@@ -1,5 +1,5 @@
-import styles from "./task.module.css";
-import ToDo from "../../types/ToDo";
+import styles from "./SingleTask.module.css";
+import Task from "../../types/Task";
 import moment from "moment";
 
 import "react-tooltip/dist/react-tooltip.css";
@@ -17,9 +17,9 @@ import {
 import { useTasks } from "../../contexts/TaskContext";
 
 interface TaskProps {
-  task: ToDo;
+  task: Task;
 }
-const Task: React.FC<TaskProps> = ({
+const SingleTask: React.FC<TaskProps> = ({
   task: { id, title, description, editedAt },
 }) => {
   const { deleteTask, updateTask } = useTasks();
@@ -96,4 +96,4 @@ const Task: React.FC<TaskProps> = ({
   );
 };
 
-export default Task;
+export default SingleTask;

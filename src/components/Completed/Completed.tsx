@@ -1,6 +1,6 @@
 import { useTasks } from "../../contexts/TaskContext";
-import ToDo from "../../types/ToDo";
-import Task from "../Task/task";
+import Task from "../../types/Task";
+import SingleTask from "../SingleTask/SingleTask";
 import styles from "./Completed.module.css";
 
 const Completed = () => {
@@ -13,8 +13,8 @@ const Completed = () => {
   return (
     <div className={styles.completedList}>
       <h1>Completed</h1>
-      {completedTasks.map((task: ToDo) => (
-        <Task task={task} key={task.id} />
+      {completedTasks.map((task: Task) => (
+        <SingleTask task={task} key={task.id} />
       ))}
     </div>
   );

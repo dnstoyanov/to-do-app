@@ -1,5 +1,5 @@
 import axios from "axios";
-import ToDo from "../types/ToDo";
+import Task from "../types/Task";
 
 const API_BASE_URL = "https://64dcdddde64a8525a0f7447e.mockapi.io/to-do-list";
 
@@ -34,7 +34,7 @@ export const deleteTaskByID = async (taskId: number) => {
   }
 };
 
-export const createTask = async (newTask: ToDo) => {
+export const createTask = async (newTask: Task) => {
   try {
     const response = await axios.post(`${API_BASE_URL}`, newTask, {
       headers: { "content-type": "application/json" },
@@ -42,7 +42,7 @@ export const createTask = async (newTask: ToDo) => {
 
     if (response.status === 201) {
       console.log("Task created successfully");
-      return response.data as ToDo;
+      return response.data as Task;
     }
   } catch (error) {
     console.error("An error occurred:", error);
@@ -53,7 +53,7 @@ export const createTask = async (newTask: ToDo) => {
 export const updateTaskCompletionStatusByID = async (
   taskId: number,
   isCompleted: boolean
-): Promise<ToDo> => {
+): Promise<Task> => {
   try {
     const response = await axios.put(
       `${API_BASE_URL}/${taskId}`,
@@ -65,7 +65,7 @@ export const updateTaskCompletionStatusByID = async (
 
     if (response.status === 200) {
       console.log("Task updated successfully");
-      return response.data as ToDo;
+      return response.data as Task;
     } else {
       throw new Error("Failed to update task");
     }
@@ -78,7 +78,7 @@ export const updateTaskCompletionStatusByID = async (
 export const updateTaskInProgressStatusByID = async (
   taskId: number,
   isInProgress: boolean
-): Promise<ToDo> => {
+): Promise<Task> => {
   try {
     const response = await axios.put(
       `${API_BASE_URL}/${taskId}`,
@@ -90,7 +90,7 @@ export const updateTaskInProgressStatusByID = async (
 
     if (response.status === 200) {
       console.log("Task updated successfully");
-      return response.data as ToDo;
+      return response.data as Task;
     } else {
       throw new Error("Failed to update task");
     }

@@ -1,10 +1,10 @@
 import { useState, ChangeEvent } from "react";
-import styles from "./AddToDo.module.css";
+import styles from "./AddTask.module.css";
 import { AiFillPlusSquare } from "react-icons/ai";
 import { createTask } from "../../api/api";
 import { useTasks } from "../../contexts/TaskContext";
 
-const AddToDo = () => {
+const AddTask = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const { addTask } = useTasks();
@@ -26,8 +26,8 @@ const AddToDo = () => {
       editedAt: new Date(),
     };
     createTask(newTask)
-      .then(() => {
-        addTask(newTask);
+      .then((createdTask) => {
+        addTask(createdTask!);
         setTitle("");
         setDescription("");
       })
@@ -38,7 +38,7 @@ const AddToDo = () => {
     setDescription("");
   };
   return (
-    <div className={styles.addToDoContainer}>
+    <div className={styles.addTaskContainer}>
       <div className={styles.inputSection}>
         <label htmlFor="taskTitle" className={styles.inputLabel}>
           Task Title:
@@ -73,4 +73,4 @@ const AddToDo = () => {
   );
 };
 
-export default AddToDo;
+export default AddTask;

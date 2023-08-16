@@ -1,12 +1,12 @@
-import styles from "./ToDoContent.module.css";
-import ToDoList from "../ToDoList/ToDoList";
+import styles from "./TasksContent.module.css";
+import TaskList from "../TaskList/TaskList";
 import Completed from "../Completed/Completed";
 import { useEffect } from "react";
 import { fetchTasks } from "../../api/api";
 import { useTasks } from "../../contexts/TaskContext";
 import Progress from "../Progress/Progress";
 
-const ToDoContent = () => {
+const TasksContent = () => {
   const { setTasks } = useTasks();
 
   useEffect(() => {
@@ -19,12 +19,12 @@ const ToDoContent = () => {
       });
   }, [setTasks]);
   return (
-    <div className={styles.todoContent}>
-      <ToDoList />
+    <div className={styles.tasksContent}>
+      <TaskList />
       <Progress />
       <Completed />
     </div>
   );
 };
 
-export default ToDoContent;
+export default TasksContent;
