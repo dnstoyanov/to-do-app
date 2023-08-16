@@ -21,8 +21,8 @@ const AddToDo = () => {
     const newTask = {
       title: title,
       description: description,
-      completed: false,
-      pending: false,
+      isCompleted: false,
+      isInProgress: false,
       editedAt: new Date(),
     };
     createTask(newTask)

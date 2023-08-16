@@ -5,12 +5,15 @@ import styles from "./ToDoList.module.css";
 
 const ToDoList = () => {
   const { tasks } = useTasks();
-  console.log(tasks);
+
+  const newTasks = tasks.filter(
+    (task) => !task.isCompleted && !task.isInProgress
+  );
 
   return (
     <div className={styles.toDoList}>
-      <h1>ToDoList</h1>
-      {tasks.map((task: ToDo) => (
+      <h1>To Do</h1>
+      {newTasks.map((task: ToDo) => (
         <Task task={task} key={task.id} />
       ))}
     </div>

@@ -5,12 +5,15 @@ import styles from "./Completed.module.css";
 
 const Completed = () => {
   const { tasks } = useTasks();
-  console.log(tasks);
+
+  const completedTasks = tasks.filter(
+    (task) => task.isCompleted && !task.isInProgress
+  );
 
   return (
     <div className={styles.completedList}>
-      <h1>ToDoList</h1>
-      {tasks.map((task: ToDo) => (
+      <h1>Completed</h1>
+      {completedTasks.map((task: ToDo) => (
         <Task task={task} key={task.id} />
       ))}
     </div>

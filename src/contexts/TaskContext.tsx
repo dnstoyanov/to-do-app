@@ -4,8 +4,8 @@ interface Task {
   id?: number;
   title: string;
   description: string;
-  completed: boolean;
-  pending: boolean;
+  isCompleted: boolean;
+  isInProgress: boolean;
   editedAt: Date;
 }
 
@@ -13,7 +13,8 @@ interface TasksContextType {
   tasks: Task[];
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
   deleteTask: (taskId: number) => void;
-  addTask: (task: Task) => void;
+  addTask: (newTask: Task) => void;
+  updateTask: (updatedTask: Task) => void;
 }
 
 const TasksContext = createContext<TasksContextType | undefined>(undefined);
@@ -40,8 +41,25 @@ export const TasksProvider: React.FC<TasksProviderProps> = ({ children }) => {
   const addTask = (newTask: Task) => {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
+
+  const updateTask = (updatedTask: Task) => {
+    setTasks((prevTasks) => {
+      return prevTasks.map((task) =>
+        task.id === updatedTask.id ? updatedTask : task
+      );
+    });
+  };
+
   return (
-    <TasksContext.Provider value={{ tasks, setTasks, deleteTask, addTask }}>
+    <TasksContext.Provider
+      value={{
+        tasks,
+        setTasks,
+        deleteTask,
+        addTask,
+        updateTask,
+      }}
+    >
       {children}
     </TasksContext.Provider>
   );

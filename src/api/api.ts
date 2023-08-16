@@ -49,3 +49,53 @@ export const createTask = async (newTask: ToDo) => {
     throw error;
   }
 };
+
+export const updateTaskCompletionStatusByID = async (
+  taskId: number,
+  isCompleted: boolean
+): Promise<ToDo> => {
+  try {
+    const response = await axios.put(
+      `${API_BASE_URL}/${taskId}`,
+      { isCompleted },
+      {
+        headers: { "content-type": "application/json" },
+      }
+    );
+
+    if (response.status === 200) {
+      console.log("Task updated successfully");
+      return response.data as ToDo;
+    } else {
+      throw new Error("Failed to update task");
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
+  }
+};
+
+export const updateTaskInProgressStatusByID = async (
+  taskId: number,
+  isInProgress: boolean
+): Promise<ToDo> => {
+  try {
+    const response = await axios.put(
+      `${API_BASE_URL}/${taskId}`,
+      { isInProgress },
+      {
+        headers: { "content-type": "application/json" },
+      }
+    );
+
+    if (response.status === 200) {
+      console.log("Task updated successfully");
+      return response.data as ToDo;
+    } else {
+      throw new Error("Failed to update task");
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
+  }
+};

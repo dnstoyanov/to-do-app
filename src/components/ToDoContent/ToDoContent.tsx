@@ -1,10 +1,10 @@
 import styles from "./ToDoContent.module.css";
 import ToDoList from "../ToDoList/ToDoList";
-import Pending from "../Pending/Pending";
 import Completed from "../Completed/Completed";
 import { useEffect } from "react";
 import { fetchTasks } from "../../api/api";
 import { useTasks } from "../../contexts/TaskContext";
+import Progress from "../Progress/Progress";
 
 const ToDoContent = () => {
   const { setTasks } = useTasks();
@@ -13,7 +13,6 @@ const ToDoContent = () => {
     fetchTasks()
       .then((tasks) => {
         setTasks(tasks);
-        console.log(tasks);
       })
       .catch((error) => {
         console.error("An error occurred:", error);
@@ -22,7 +21,7 @@ const ToDoContent = () => {
   return (
     <div className={styles.todoContent}>
       <ToDoList />
-      <Pending />
+      <Progress />
       <Completed />
     </div>
   );

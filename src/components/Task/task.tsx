@@ -9,7 +9,11 @@ import { TbProgressCheck } from "react-icons/tb";
 import { AiTwotoneCalendar } from "react-icons/ai";
 import { IoMdDoneAll } from "react-icons/io";
 import { TiDeleteOutline } from "react-icons/ti";
-import { deleteTaskByID } from "../../api/api";
+import {
+  deleteTaskByID,
+  updateTaskCompletionStatusByID,
+  updateTaskInProgressStatusByID,
+} from "../../api/api";
 import { useTasks } from "../../contexts/TaskContext";
 
 interface TaskProps {
@@ -18,17 +22,42 @@ interface TaskProps {
 const Task: React.FC<TaskProps> = ({
   task: { id, title, description, editedAt },
 }) => {
-  const { deleteTask } = useTasks();
+  const { deleteTask, updateTask } = useTasks();
   const formattedDate = moment(editedAt).format("D MMMM, YYYY h:mm:ss A z");
 
   const handleDelete = async (id: number) => {
-    try {
-      await deleteTaskByID(id);
-      deleteTask(id);
-    } catch (error) {
-      console.error("An error occurred while deleting the task:", error);
+    if (id !== undefined) {
+      try {
+        await deleteTaskByID(id);
+        deleteTask(id);
+      } catch (error) {
+        console.error("An error occurred while deleting the task:", error);
+      }
     }
   };
+
+  const handleComplete = async (id: number) => {
+    if (id !== undefined) {
+      try {
+        const updatedTask = await updateTaskCompletionStatusByID(id, true);
+        updateTask(updatedTask);
+      } catch (error) {
+        console.error("Error updating task:", error);
+      }
+    }
+  };
+
+  const handleProgress = async (id: number) => {
+    if (id !== undefined) {
+      try {
+        const updatedTask = await updateTaskInProgressStatusByID(id, true);
+        updateTask(updatedTask);
+      } catch (error) {
+        console.error("Error updating task:", error);
+      }
+    }
+  };
+
   return (
     <div className={styles.tastContainer}>
       <div>
@@ -44,8 +73,10 @@ const Task: React.FC<TaskProps> = ({
           data-tooltip-id="progress-btn"
           data-tooltip-content="Move task to In Progress"
           className={styles.progressBtn}
+          onClick={() => id !== undefined && handleProgress(id)}
         />
         <IoMdDoneAll
+          onClick={() => id !== undefined && handleComplete(id)}
           data-tooltip-id="complete-btn"
           data-tooltip-content="Move task to Complete"
           className={styles.completeBtn}
