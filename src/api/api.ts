@@ -90,3 +90,26 @@ export const updateTaskInProgressStatusByID = async (
     throw error;
   }
 };
+
+export const updateTaskToDoStatusByID = async (
+  taskId: number,
+  isInProgress: boolean
+): Promise<Task> => {
+  try {
+    const response = await axios.put(`${API_BASE_URL}/${taskId}`, {
+      isInProgress,
+      isCompleted: isInProgress,
+      editedAt: new Date().toISOString(),
+    });
+
+    if (response.status === 200) {
+      console.log("Task updated successfully");
+      return response.data as Task;
+    } else {
+      throw new Error("Failed to update task");
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
+  }
+};

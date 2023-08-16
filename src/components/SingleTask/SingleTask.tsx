@@ -9,10 +9,12 @@ import { TbProgressCheck } from "react-icons/tb";
 import { AiTwotoneCalendar } from "react-icons/ai";
 import { IoMdDoneAll } from "react-icons/io";
 import { TiDeleteOutline } from "react-icons/ti";
+import { BsCardChecklist } from "react-icons/bs";
 import {
   deleteTaskByID,
   updateTaskCompletionStatusByID,
   updateTaskInProgressStatusByID,
+  updateTaskToDoStatusByID,
 } from "../../api/api";
 import { useTasks } from "../../contexts/TaskContext";
 
@@ -58,6 +60,17 @@ const SingleTask: React.FC<TaskProps> = ({
     }
   };
 
+  const handleToDo = async (id: number) => {
+    if (id !== undefined) {
+      try {
+        const updatedTask = await updateTaskToDoStatusByID(id, false);
+        updateTask(updatedTask);
+      } catch (error) {
+        console.error("Error updating task:", error);
+      }
+    }
+  };
+
   return (
     <div className={styles.taskContainer}>
       <div className={styles.taskInfo}>
@@ -69,8 +82,16 @@ const SingleTask: React.FC<TaskProps> = ({
         </div>
       </div>
       <div>
+        <BsCardChecklist
+          className={!isInProgress ? styles.disabled : styles.toDoBtn}
+          data-tooltip-id="todo-btn"
+          data-tooltip-content="Move task to To Do"
+          onClick={() => id !== undefined && handleToDo(id)}
+        />
         <TbProgressCheck
-          className={isInProgress ? styles.disabled : styles.progressBtn}
+          className={
+            isInProgress || isCompleted ? styles.disabled : styles.progressBtn
+          }
           data-tooltip-id="progress-btn"
           data-tooltip-content="Move task to In Progress"
           onClick={() => id !== undefined && handleProgress(id)}
@@ -91,6 +112,7 @@ const SingleTask: React.FC<TaskProps> = ({
         <Tooltip id="progress-btn" />
         <Tooltip id="complete-btn" />
         <Tooltip id="delete-btn" />
+        <Tooltip id="todo-btn" />
       </div>
     </div>
   );

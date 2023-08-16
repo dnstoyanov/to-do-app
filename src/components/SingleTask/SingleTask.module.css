@@ -21,11 +21,21 @@
 .completeBtn,
 .progressBtn,
 .deleteBtn,
-.disabled {
+.disabled,
+.toDoBtn {
   font-size: 28px;
   cursor: pointer;
   margin-right: 10px;
+  transition: background-color 0.3s;
 }
+
+.toDoBtn {
+  color: rgb(213, 52, 235);
+}
+.toDoBtn:hover {
+  color: rgb(178, 47, 196);
+}
+
 .completeBtn {
   color: rgb(13, 158, 13);
 }
