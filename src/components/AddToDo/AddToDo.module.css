@@ -1,0 +1,53 @@
+.addToDoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .addToDoContainer {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.inputField {
+  padding: 10px;
+  border: 1px solid #ccc;
+  flex: 1;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.inputField:focus {
+  border-color: #007bff;
+}
+
+.inputLabel {
+  font-weight: bold;
+}
+
+.addButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
