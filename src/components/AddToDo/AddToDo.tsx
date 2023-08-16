@@ -2,10 +2,12 @@ import { useState, ChangeEvent } from "react";
 import styles from "./AddToDo.module.css";
 import { AiFillPlusSquare } from "react-icons/ai";
 import { createTask } from "../../api/api";
+import { useTasks } from "../../contexts/TaskContext";
 
 const AddToDo = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const { addTask } = useTasks();
 
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -25,13 +27,13 @@ const AddToDo = () => {
     };
     createTask(newTask)
       .then(() => {
+        addTask(newTask);
         setTitle("");
         setDescription("");
       })
       .catch((error) => {
-        // Handle error
+        console.log(error);
       });
-    console.log(title, description);
     setTitle("");
     setDescription("");
   };

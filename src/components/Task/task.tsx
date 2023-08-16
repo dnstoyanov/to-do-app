@@ -9,7 +9,8 @@ import { TbProgressCheck } from "react-icons/tb";
 import { AiTwotoneCalendar } from "react-icons/ai";
 import { IoMdDoneAll } from "react-icons/io";
 import { TiDeleteOutline } from "react-icons/ti";
-import { deleteTask } from "../../api/api";
+import { deleteTaskByID } from "../../api/api";
+import { useTasks } from "../../contexts/TaskContext";
 
 interface TaskProps {
   task: ToDo;
@@ -17,11 +18,13 @@ interface TaskProps {
 const Task: React.FC<TaskProps> = ({
   task: { id, title, description, editedAt },
 }) => {
+  const { deleteTask } = useTasks();
   const formattedDate = moment(editedAt).format("D MMMM, YYYY h:mm:ss A z");
 
   const handleDelete = async (id: number) => {
     try {
-      await deleteTask(id);
+      await deleteTaskByID(id);
+      deleteTask(id);
     } catch (error) {
       console.error("An error occurred while deleting the task:", error);
     }

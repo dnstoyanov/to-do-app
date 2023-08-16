@@ -19,7 +19,7 @@ export const fetchTasks = () => {
     });
 };
 
-export const deleteTask = async (taskId: number) => {
+export const deleteTaskByID = async (taskId: number) => {
   try {
     const response = await axios.delete(`${API_BASE_URL}/${taskId}`, {
       headers: { "content-type": "application/json" },
@@ -42,7 +42,7 @@ export const createTask = async (newTask: ToDo) => {
 
     if (response.status === 201) {
       console.log("Task created successfully");
-      return response.data as ToDo; // Return the newly created task
+      return response.data as ToDo;
     }
   } catch (error) {
     console.error("An error occurred:", error);
