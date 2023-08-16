@@ -1,6 +1,5 @@
 import { useState, ChangeEvent } from "react";
 import styles from "./AddTask.module.css";
-import { AiFillPlusSquare } from "react-icons/ai";
 import { createTask } from "../../api/api";
 import { useTasks } from "../../contexts/TaskContext";
 
@@ -66,7 +65,6 @@ const AddTask = () => {
         />
       </div>
       <button className={styles.addButton} onClick={handleAddNewTask}>
-        <AiFillPlusSquare className={styles.icon} />
         Add Task
       </button>
     </div>
