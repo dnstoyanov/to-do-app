@@ -4,7 +4,7 @@
   gap: 20px;
   margin: 20px;
   padding: 40px;
-  background-color: #b4d8ff;
+  background-color: #ededed;
 }
 
 @media (min-width: 768px) {
@@ -34,6 +34,8 @@
 
 .inputLabel {
   font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .addButton {

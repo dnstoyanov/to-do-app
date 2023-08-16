@@ -59,8 +59,8 @@ const SingleTask: React.FC<TaskProps> = ({
   };
 
   return (
-    <div className={styles.tastContainer}>
-      <div>
+    <div className={styles.taskContainer}>
+      <div className={styles.taskInfo}>
         <h3>{title}</h3>
         <p>{description}</p>
         <div className={styles.dateEdited}>

@@ -13,7 +13,7 @@ const Progress = () => {
 
   return (
     <div className={styles.progressList}>
-      <h1>In Progress</h1>
+      <h2>In Progress</h2>
       {tasksInProgress.map((task: Task) => (
         <SingleTask task={task} key={task.id} />
       ))}

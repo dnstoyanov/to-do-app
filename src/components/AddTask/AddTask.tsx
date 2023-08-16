@@ -6,12 +6,12 @@ import { useTasks } from "../../contexts/TaskContext";
 const AddTask = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [fieldError, setFieldError] = useState<string>("");
+  const [titleError, setTitleError] = useState<string>("");
   const { addTask } = useTasks();
 
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
-    setFieldError("");
+    setTitleError("");
   };
 
   const handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +20,7 @@ const AddTask = () => {
 
   const handleAddNewTask = () => {
     if (!title) {
-      setFieldError("Title is required");
+      setTitleError("Title is required");
       return;
     }
 
@@ -51,9 +51,9 @@ const AddTask = () => {
         </label>
         <input
           id="taskTitle"
-          placeholder={fieldError ? "Title is required" : "Enter task title*"}
+          placeholder={titleError ? titleError : "Enter task title*"}
           type="text"
-          className={fieldError ? styles.errorField : styles.inputField}
+          className={titleError ? styles.errorField : styles.inputField}
           value={title}
           onChange={handleTitleChange}
         />

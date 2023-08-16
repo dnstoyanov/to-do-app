@@ -13,7 +13,7 @@ const TaskList = () => {
 
   return (
     <div className={styles.TaskList}>
-      <h1>To Do</h1>
+      <h2>To Do</h2>
       {newTasks.map((task: Task) => (
         <SingleTask task={task} key={task.id} />
       ))}

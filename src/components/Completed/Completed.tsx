@@ -12,7 +12,7 @@ const Completed = () => {
 
   return (
     <div className={styles.completedList}>
-      <h1>Completed</h1>
+      <h2>Completed</h2>
       {completedTasks.map((task: Task) => (
         <SingleTask task={task} key={task.id} />
       ))}
