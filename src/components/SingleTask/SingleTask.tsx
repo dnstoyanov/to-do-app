@@ -20,7 +20,7 @@ interface TaskProps {
   task: Task;
 }
 const SingleTask: React.FC<TaskProps> = ({
-  task: { id, title, description, editedAt },
+  task: { id, title, description, editedAt, isCompleted, isInProgress },
 }) => {
   const { deleteTask, updateTask } = useTasks();
   const formattedDate = moment(editedAt).format("D MMMM, YYYY h:mm:ss A z");
@@ -70,16 +70,16 @@ const SingleTask: React.FC<TaskProps> = ({
       </div>
       <div>
         <TbProgressCheck
+          className={isInProgress ? styles.disabled : styles.progressBtn}
           data-tooltip-id="progress-btn"
           data-tooltip-content="Move task to In Progress"
-          className={styles.progressBtn}
           onClick={() => id !== undefined && handleProgress(id)}
         />
         <IoMdDoneAll
           onClick={() => id !== undefined && handleComplete(id)}
           data-tooltip-id="complete-btn"
           data-tooltip-content="Move task to Complete"
-          className={styles.completeBtn}
+          className={isCompleted ? styles.disabled : styles.completeBtn}
         />
 
         <TiDeleteOutline

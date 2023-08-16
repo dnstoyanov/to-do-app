@@ -10,7 +10,8 @@
 
 .completeBtn,
 .progressBtn,
-.deleteBtn {
+.deleteBtn,
+.disabled {
   font-size: 28px;
   cursor: pointer;
   margin-right: 10px;
@@ -34,4 +35,10 @@
 }
 .dateText {
   font-size: 14px;
+}
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: grey;
 }
