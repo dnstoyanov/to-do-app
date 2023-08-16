@@ -2,6 +2,9 @@ import styles from "./task.module.css";
 import ToDo from "../../types/ToDo";
 import moment from "moment";
 
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+
 import { TbProgressCheck } from "react-icons/tb";
 import { IoMdDoneAll } from "react-icons/io";
 import { TiDeleteOutline } from "react-icons/ti";
@@ -32,15 +35,26 @@ const Task: React.FC<TaskProps> = ({
         <p>{formattedDate}</p>
       </div>
       <div>
-        <TbProgressCheck className={styles.progressBtn} />
-        <IoMdDoneAll className={styles.completeBtn} />
+        <TbProgressCheck
+          data-tooltip-id="progress-btn"
+          data-tooltip-content="Move task to In Progress"
+          className={styles.progressBtn}
+        />
+        <IoMdDoneAll
+          data-tooltip-id="complete-btn"
+          data-tooltip-content="Move task to Complete"
+          className={styles.completeBtn}
+        />
 
         <TiDeleteOutline
+          data-tooltip-id="delete-btn"
+          data-tooltip-content="Delete task"
           className={styles.deleteBtn}
           onClick={() => handleDelete(id)}
-          onMouseEnter={() => setShowToolTip(true)}
-          onMouseLeave={() => setShowToolTip(false)}
         />
+        <Tooltip id="progress-btn" />
+        <Tooltip id="complete-btn" />
+        <Tooltip id="delete-btn" />
       </div>
     </div>
   );
