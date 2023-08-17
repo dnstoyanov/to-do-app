@@ -10,7 +10,7 @@ const AddTask = () => {
   const { addTask } = useTasks();
 
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
+    setTitle(event.target.value.trim());
     setTitleError("");
   };
 

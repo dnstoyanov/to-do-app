@@ -67,7 +67,5 @@
 }
 
 .disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  color: grey;
+  display: none;
 }
