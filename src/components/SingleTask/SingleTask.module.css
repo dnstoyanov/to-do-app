@@ -51,7 +51,7 @@
 }
 
 .deleteBtn {
-  color: red;
+  color: rgb(240, 10, 10);
 }
 .deleteBtn:hover {
   color: rgb(194, 13, 13);
