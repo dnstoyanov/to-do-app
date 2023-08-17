@@ -1,5 +1,7 @@
 import axios from "axios";
 import Task from "../types/Task";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const API_BASE_URL = "https://64dcdddde64a8525a0f7447e.mockapi.io/to-do-list";
 
@@ -13,7 +15,7 @@ export const fetchTasks = async () => {
       throw new Error("Failed to fetch tasks");
     }
   } catch (error) {
-    console.error("An error occurred:", error);
+    toast.error(`An error occurred: ${error}`);
     throw error;
   }
 };
@@ -23,10 +25,10 @@ export const deleteTaskByID = async (taskId: number) => {
     const response = await axios.delete(`${API_BASE_URL}/${taskId}`);
 
     if (response.status === 200) {
-      console.log("Task deleted successfully");
+      toast.success("Task deleted successfully");
     }
   } catch (error) {
-    console.error("An error occurred:", error);
+    toast.error(`An error occurred: ${error}`);
     throw error;
   }
 };
@@ -36,11 +38,12 @@ export const createTask = async (newTask: Task) => {
     const response = await axios.post(`${API_BASE_URL}`, newTask);
 
     if (response.status === 201) {
-      console.log("Task created successfully");
+      toast.success("Task created successfully");
       return response.data as Task;
     }
   } catch (error) {
-    console.error("An error occurred:", error);
+    toast.error(`An error occurred: ${error}`);
+
     throw error;
   }
 };
@@ -57,13 +60,13 @@ export const updateTaskCompletionStatusByID = async (
     });
 
     if (response.status === 200) {
-      console.log("Task updated successfully");
+      toast.success("Task updated successfully");
       return response.data as Task;
     } else {
       throw new Error("Failed to update task");
     }
   } catch (error) {
-    console.error("An error occurred:", error);
+    toast.error(`An error occurred: ${error}`);
     throw error;
   }
 };
@@ -80,13 +83,13 @@ export const updateTaskInProgressStatusByID = async (
     });
 
     if (response.status === 200) {
-      console.log("Task updated successfully");
+      toast.success("Task updated successfully");
       return response.data as Task;
     } else {
       throw new Error("Failed to update task");
     }
   } catch (error) {
-    console.error("An error occurred:", error);
+    toast.error(`An error occurred: ${error}`);
     throw error;
   }
 };
@@ -103,13 +106,13 @@ export const updateTaskToDoStatusByID = async (
     });
 
     if (response.status === 200) {
-      console.log("Task updated successfully");
+      toast.success("Task updated successfully");
       return response.data as Task;
     } else {
       throw new Error("Failed to update task");
     }
   } catch (error) {
-    console.error("An error occurred:", error);
+    toast.error(`An error occurred: ${error}`);
     throw error;
   }
 };

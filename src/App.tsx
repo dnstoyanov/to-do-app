@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import AddTask from "./components/AddTask/AddTask";
 import Footer from "./components/Footer/Footer";
@@ -13,7 +14,19 @@ function App() {
           <Header />
           <AddTask />
           <TasksContent />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            pauseOnHover
+            theme="colored"
+          />
         </div>
+
         <Footer />
       </div>
     </TasksProvider>
