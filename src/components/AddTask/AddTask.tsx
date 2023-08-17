@@ -41,8 +41,6 @@ const AddTask = () => {
       .catch((error) => {
         console.log(error);
       });
-    setTitle("");
-    setDescription("");
   };
   return (
     <div className={styles.addTaskContainer}>
