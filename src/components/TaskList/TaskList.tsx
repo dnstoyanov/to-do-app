@@ -5,7 +5,6 @@ import styles from "./TaskList.module.css";
 
 const TaskList = () => {
   const { tasks } = useTasks();
-  console.log(tasks);
 
   const newTasks = tasks.filter(
     (task) => !task.isCompleted && !task.isInProgress
