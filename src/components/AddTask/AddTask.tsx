@@ -10,7 +10,7 @@ const AddTask = () => {
   const { addTask } = useTasks();
 
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value.trim());
+    setTitle(event.target.value);
     setTitleError("");
   };
 
@@ -19,14 +19,15 @@ const AddTask = () => {
   };
 
   const handleAddNewTask = () => {
-    if (!title) {
-      setTitleError("Title is required");
+    if (!title.trim()) {
+      setTitle("");
+      setTitleError("Title is required and should not be empty");
       return;
     }
 
     const newTask = {
-      title: title,
-      description: description,
+      title: title.trim(),
+      description: description.trim(),
       isCompleted: false,
       isInProgress: false,
       editedAt: new Date(),
